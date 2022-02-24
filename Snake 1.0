@@ -1,0 +1,45 @@
+import pygame
+from pygame.locals import *
+
+# variables
+size = width, height = 800, 600
+green = 0, 150, 0
+black = 0, 0, 0
+screen = pygame.display.set_mode(size)
+screen.fill(green)
+head_x, head_y = 400, 300
+running = True
+
+def draw_circle():
+    screen.fill(green)
+    pygame.draw.circle(screen, black, (head_x, head_y), 10)
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        if event.type == KEYDOWN:
+            if event.key == K_ESCAPE:
+                running = False
+
+            if event.key == K_SPACE:
+                draw_circle()
+
+            if event.key == K_RIGHT:
+                head_x += 20
+                draw_circle()
+
+            if event.key == K_LEFT:
+                head_x -= 20
+                draw_circle()
+
+            if event.key == K_DOWN:
+                head_y += 20
+                draw_circle()
+
+            if event.key == K_UP:
+                head_y -= 20
+                draw_circle()
+
+    pygame.display.flip()
